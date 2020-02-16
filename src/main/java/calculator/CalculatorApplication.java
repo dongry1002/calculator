@@ -14,23 +14,22 @@ public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     String value = scanner.nextLine();
     String[] split_value = value.split(" ");
-    int[] number_arr = new int[round(split_value.length/2)];
+    int[] number_arr = new int[(split_value.length/2)+1];
     String[] sign_arr = new String[split_value.length/2];
+    int j = 0;
+    int k = 0;
     for(int i =0; i<split_value.length;i++){
         if(i%2==0){ //숫자
-            number_arr[i] = Integer.parseInt(split_value[i]);
+            number_arr[k++] = Integer.parseInt(split_value[i]);
         }
         if(i%2==1){//부호
-            sign_arr[i] = split_value[i];
+            sign_arr[j++] = split_value[i];
         }
     }
 
-    Call call_calculator = new Call();
+    Calculator calculator = new Calculator();
 
-
-
-
-    System.out.println(Arrays.toString(split_value));
+    System.out.println(calculator.callVal(sign_arr,number_arr));
 
 
 }
