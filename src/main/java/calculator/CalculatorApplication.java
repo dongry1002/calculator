@@ -7,18 +7,23 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class CalculatorApplication {
-public static void main(String[] args) {
-    System.out.println("input : ");
-    Scanner scanner = new Scanner(System.in);
-    String value = scanner.nextLine();
-
-    Spliter spliter = new Spliter();
-    spliter.input_spliter(value);
-
-    Calculator calculator = new Calculator();
-    System.out.println(calculator.callVal(spliter.sign_arr,spliter.number_arr));
+    public static void main(String[] args) {
+        System.out.println("input : ");
+        Scanner scanner = new Scanner(System.in);
+        String value = scanner.nextLine();
+        if(isBlank(value)){
+            System.out.println("Input right value");
+            System.exit(1);
+        }
+        Spliter spliter = new Spliter(value);
+        System.out.println(spliter);
 
     }
+
+    private static boolean isBlank(String value){
+        return value == null || value.isEmpty();
+    }
+
 
 
 }
