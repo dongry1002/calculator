@@ -1,7 +1,7 @@
 package calculator;
 
 public class Calculator {
-    private int result;
+    private double result;
     private int nextvalue = 1;
     Exception invalidValue = new Exception("사칙연산자만 입력하세요");
 
@@ -11,55 +11,55 @@ public class Calculator {
     //Null Pointer Exception 발생할 여지를 줄이기 : "+".equals(a[i])
     //존재가 확실한 것을 앞으로 빼는 것이 좋다.
     //+,-,*,/ 를 상수로 빼는 것도 좋음 -> Enum으로 바꿀 수도 있음.
-    Calculator(String[] operatorArr,int[] intArr){
-        result = intArr[0];
-        result = callVal(operatorArr,intArr);
+    Calculator(String[] operatorArr, int[] numberArr){
+        result = numberArr[0];
+        result = callVal(operatorArr,numberArr);
     }
     
-    private int callVal(String[] operatorArr,int[] intArr){
+    private double callVal(String[] operatorArr, int[] numberArr){
         for(int i = 0 ; i < operatorArr.length ; i++){
-            result = CalculateValue(operatorArr[i], intArr);
+            result = CalculateValue(operatorArr[i], numberArr);
         }
         return result;
 
     }
 
-    private int CalculateValue(String operator, int[] intArr) {
+    private double CalculateValue(String operator, int[] numberArr) {
         if("+".equals(operator)){
-            return plus(result,intArr[nextvalue++]);
+            return plus(result,numberArr[nextvalue++]);
         }
         if("-".equals(operator)){
-            return minus(result,intArr[nextvalue++]);
+            return minus(result,numberArr[nextvalue++]);
         }
         if("*".equals(operator)){
-            return multi(result,intArr[nextvalue++]);
+            return multi(result,numberArr[nextvalue++]);
         }
         if("/".equals(operator)){
-            return divide(result,intArr[nextvalue++]);
+            return divide(result,numberArr[nextvalue++]);
         }
         System.out.println(this.invalidValue.getMessage());
         return 0; //수정 필요
     }
 
-    public int getResult(){
+    public double getResult(){
         return result;
     }
 
-    private int plus(int left, int right)
+    private double plus(double left, double right)
     {
         return left+right;
     }
 
-    private int divide(int left, int right)
+    private double divide(double left, double right)
     {
         return left/right;
     }
 
-    private int minus(int left, int right){
+    private double minus(double left, double right){
         return left-right;
     }
 
-    private int multi(int left, int right)
+    private double multi(double left, double right)
     {
         return left*right;
     }

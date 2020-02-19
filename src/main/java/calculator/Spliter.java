@@ -29,22 +29,22 @@ public class Spliter {
         return numberArr;
     }
 
-    private boolean isRightNumber(String number) {
+    public static boolean isRightNumber(String number) {
         try{
             int toNumber = Integer.parseInt(number);
             return true;
         }
         catch(Exception notNumber){
-            System.out.println();
             return false;
         }
     }
 
-    private void checkValidity(boolean falseOperator, String errorMessage) {
+    public static boolean checkValidity(boolean falseOperator, String errorMessage) {
         if (falseOperator) {//부호
             System.out.println(errorMessage);
             System.exit(0);
         }
+        return true;
     }
 
     private int getAnNumberIndex(String[] splitedValue) {
@@ -62,7 +62,7 @@ public class Spliter {
         return operatorArr;
     }
 
-    private static boolean isRightOperator(String operator){
+    public static boolean isRightOperator(String operator){
         return "+".equals(operator)||"-".equals(operator)||"*".equals(operator)||"/".equals(operator);
     }
 

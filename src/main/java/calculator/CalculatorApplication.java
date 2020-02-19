@@ -14,9 +14,10 @@ public class CalculatorApplication {
         Calculator calculator = new Calculator(spliter.getOperatorArr(),spliter.getNumberArr());
         System.out.println(calculator.getResult());
 
+
     }
 
-    private static boolean isBlank(String value){
+    public static boolean isBlank(String value){
         return value == null || value.isEmpty();
     }
 

@@ -3,16 +3,15 @@ package calculator;
 import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.Test;
 
-import java.util.Scanner;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorApplicationTest {
 
     @Test
     void calculatorResultTest(){
+        String blank = null;
         CalculatorApplication calculatorApplication = new CalculatorApplication();
-
-        assertEquals();
+        assertThat(calculatorApplication.isBlank(blank)).isEqualTo(true);
     }
 }
