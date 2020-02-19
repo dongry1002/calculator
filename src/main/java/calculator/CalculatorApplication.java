@@ -1,9 +1,4 @@
 package calculator;
-
-import com.sun.scenario.effect.impl.sw.java.JSWBlend_SRC_OUTPeer;
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class CalculatorApplication {
@@ -13,10 +8,11 @@ public class CalculatorApplication {
         String value = scanner.nextLine();
         if(isBlank(value)){
             System.out.println("Input right value");
-            System.exit(1);
+            System.exit(0);
         }
         Spliter spliter = new Spliter(value);
-        System.out.println(spliter);
+        Calculator calculator = new Calculator(spliter.getOperatorArr(),spliter.getNumberArr());
+        System.out.println(calculator.getResult());
 
     }
 

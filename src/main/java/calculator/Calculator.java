@@ -6,7 +6,7 @@ public class Calculator {
     Exception invalidValue = new Exception("사칙연산자만 입력하세요");
 
     //부호를 검증하고, 그에 맞는 함수를 호출하는 함수.
-    //변수명 만들기. (축약하지 않기)
+    //변수명 만들기.(축약하지 않기)
     //Exception handle
     //Null Pointer Exception 발생할 여지를 줄이기 : "+".equals(a[i])
     //존재가 확실한 것을 앞으로 빼는 것이 좋다.
@@ -38,7 +38,7 @@ public class Calculator {
             return divide(result,intArr[nextvalue++]);
         }
         System.out.println(this.invalidValue.getMessage());
-        return 0;
+        return 0; //수정 필요
     }
 
     public int getResult(){
