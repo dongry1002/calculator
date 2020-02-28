@@ -2,80 +2,56 @@ package calculator;
 
 
 public class Spliter {
-    private static final String DELIMITER = " ";
-    private int[] numberArr;
-    private String[] operatorArr;
-//    setter는
-//    testcode는 private인 걸 못짬.
-//    return이 void이면 test를 못함.
+     public static final String DELIMITER =" ";
 
-    //생성자로 바꾸기.
-    //number_arr와 sign_arr를 class로 뽑던지, 세분화
-    //void type function을 쓰지 않는 것이 좋음.
-    //validation check
-    Spliter(String value) {
+    public static int[] splitNumbers(String value) {
         String[] splitedValue = value.split(DELIMITER);
-        numberArr = splitNumbers(splitedValue);
-        operatorArr = splitOperator(splitedValue);
-    }
-
-    private int[] splitNumbers(String[] splitedValue){
-        numberArr = new int[getAnNumberIndex(splitedValue)];
+        int[] numberArr = new int[getAnNumberIndex(splitedValue)];
         int numberIndex = 0;
-        for (int i = 0; i < splitedValue.length; i+=2) {
-            checkValidity(!isRightNumber(splitedValue[i]), "Input valid value");
-            numberArr[numberIndex++] = Integer.parseInt(splitedValue[i]);
+        for (int i = 0; i < splitedValue.length; i += 2) {
+            numberArr[numberIndex++] = checkValidity(splitedValue[i]);
         }
         return numberArr;
     }
 
-    public static boolean isRightNumber(String number) {
-        try{
-            int toNumber = Integer.parseInt(number);
-            return true;
+    public static int checkValidity(String stringToInt) {
+        int toInt = 0;
+        try {
+            toInt = Integer.parseInt(stringToInt);
+        } catch (IllegalArgumentException parseFail) {
+            System.out.println("숫자를 입력하시오");
         }
-        catch(Exception notNumber){
-            return false;
-        }
+
+        return toInt;
     }
 
-    public static boolean checkValidity(boolean falseOperator, String errorMessage) {
-        if (falseOperator) {//부호
-            System.out.println(errorMessage);
-            System.exit(0);
-        }
-        return true;
-    }
 
-    private int getAnNumberIndex(String[] splitedValue) {
+    private static int getAnNumberIndex(String[] splitedValue) {
         return (getOperatorIndex(splitedValue)) + 1;
     }
 
+
     //Exception Controll. operator와 number
-    private String[] splitOperator(String[] splitedValue){
-        operatorArr = new String[getOperatorIndex(splitedValue)];
+    public static String[] splitOperator(String value) {
+        String[] splitedValue = value.split(DELIMITER);
+        String[] operatorArr = new String[getOperatorIndex(splitedValue)];
         int operatorIndex = 0;
-        for (int i = 1; i < splitedValue.length; i+=2) {
-            checkValidity(!isRightOperator(splitedValue[i]), "Use right operator");
+        for (int i = 1; i < splitedValue.length; i += 2) {
+            isRightOperator(splitedValue[i]);
             operatorArr[operatorIndex++] = splitedValue[i];
         }
         return operatorArr;
     }
 
-    public static boolean isRightOperator(String operator){
-        return "+".equals(operator)||"-".equals(operator)||"*".equals(operator)||"/".equals(operator);
+    public static void isRightOperator(String operator) {
+       if( "+".equals(operator) || "-".equals(operator) || "*".equals(operator) || "/".equals(operator)) {
+           return ;
+       }else
+           throw new IllegalArgumentException("사칙 연산자를 입력하세요.");
     }
 
-    private int getOperatorIndex(String[] splitedValue) {
+    private static int getOperatorIndex(String[] splitedValue) {
         return splitedValue.length / 2;
-    }
-
-    public int[] getNumberArr() {
-        return numberArr;
-    }
-
-    public String[] getOperatorArr() {
-        return operatorArr;
     }
 
 }

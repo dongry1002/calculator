@@ -1,4 +1,6 @@
 package calculator;
+
+
 import java.util.Scanner;
 
 public class CalculatorApplication {
@@ -6,19 +8,21 @@ public class CalculatorApplication {
         System.out.println("input : ");
         Scanner scanner = new Scanner(System.in);
         String value = scanner.nextLine();
-        if(isBlank(value)){
-            System.out.println("Input right value");
-            System.exit(0);
-        }
-        Spliter spliter = new Spliter(value);
-        Calculator calculator = new Calculator(spliter.getOperatorArr(),spliter.getNumberArr());
-        System.out.println(calculator.getResult());
+        isBlank(value);
 
+        int[] numberArr = Spliter.splitNumbers(value);
+        String[] operatorArr = Spliter.splitOperator(value);
+        Calculator calculator = new Calculator();
+        System.out.println(calculator.callVal(operatorArr,numberArr));
 
     }
 
-    public static boolean isBlank(String value){
-        return value == null || value.isEmpty();
+    public static void isBlank(String value){
+        if(value != null && value != " " ){
+            return;
+        }
+
+        throw new IllegalArgumentException("Input right value");
     }
 
 

@@ -14,10 +14,22 @@ class CalculatorTest {
 //        2 + 3 * 4 / 2 - 2
         String[] operatorArr = {"+","*","/","-"};
         int[] numberArr = {2,3,4,2,2};
-        Calculator calculator = new Calculator(operatorArr,numberArr);
+        Calculator calculator = new Calculator();
         assertThat(calculator.getResult()).isEqualTo(8.0);
 
 
     }
 
+    @Test
+    void callVal() {
+
+    }
+
+    @Test
+    void calculateValue() {
+    }
+
+    @Test
+    void getResult() {
+    }
 }
